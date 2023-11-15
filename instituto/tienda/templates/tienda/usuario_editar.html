@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Usuario</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="mt-4 text-center">Formulario Actualizar Usuario</h2>
+                <form action="{% url 'usuario_actualizar' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{usuario.nombre}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="contraseña">Contraseña:</label>
+                        <input type="text" class="form-control" id="contraseña" name="contraseña" value="{{usuario.contraseña}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo:</label>
+                        <input type="email" class="form-control" id="correo" name="correo" value="{{usuario.correo}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Telefono:</label>
+                        <input type="text" class="form-control" id="telefono" name="telefono" value="{{usuario.telefono}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="admin">Admin:</label>
+                        <input type="text" class="form-control" id="admin" name="admin" value="{{usuario.admin}}" readonly>
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="opcion" value="Actualizar">Actualizar</button>
+                    <button type="submit" class="btn btn-secondary" name="opcion" value="Volver al crud">Volver al crud</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

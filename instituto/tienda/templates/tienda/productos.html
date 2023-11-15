@@ -1,0 +1,33 @@
+{% extends 'tienda/index.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <br> 
+    {% if productos %}
+        <div class="row">
+            {% for producto in productos %}
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <div style="height: 100%;">
+                                    <img src="{% static 'image/' %}{{ producto.imagen }}" style="height: 100%;" class="img-fluid rounded-start" alt="{{ producto.nombre_producto }}">
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <p class="card-text">ID: {{ producto.id }}</p>
+                                    <p class="card-text">Nombre: {{ producto.nombre_producto }}</p>
+                                    <p class="card-text">Precio: {{ producto.precio }}</p>
+                                    <p class="card-text">Stock:{{ producto.stock }}</p>
+                                   <center><a href="{% url 'comprar' pk=producto.id %}" class="btn btn-light">Ver Producto</a></center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'tienda/index.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ producto.nombre_producto }}</title>
+</head>
+<body>
+    <h1>{{ producto.nombre_producto }}</h1>
+    <form>
+        <img src="{% static 'image/' %}{{ producto.imagen }}" style="max-width: 300px; max-height: 300px;" alt="{{ producto.nombre_producto }}"><br>
+        <label>ID</label>
+        <input type="text" id="id" name="id" readonly value="{{producto.id}}"><br>
+
+        <label>Album</label>
+        <input type="text" id="nombre_producto" name="nombre_producto" readonly value="{{producto.nombre_producto}}"><br>
+
+        <label>Precio</label>
+        <input type="number" id="precio" name="precio" readonly value="{{producto.precio}}"><br>
+
+        <label>Stock</label>
+        <input type="number" id="stock" name="stock" readonly value="{{producto.stock}}"><br>
+
+        <label>Cantidad</label>
+        <input type="number" id="Cantidad" name="Cantidad" min="1" max="{{producto.stock}}" onclick="calcular()"><br>
+
+        <label>Total</label>
+        <input type="text" id="Total" name="Total" onclick="calcular()" readonly><br>
+
+        <input type="button" value="Pagar"><br>
+    
+        <a href="{% url 'producto' %}">Volver a la lista de productos</a>
+    </form>
+</body>
+</html>
+{% endblock %}

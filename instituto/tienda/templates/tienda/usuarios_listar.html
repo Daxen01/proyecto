@@ -1,0 +1,36 @@
+{% extends 'tienda/index.html' %}
+{% block content %}
+<div class="container">
+    <br>
+    <a href="{% url 'usuario_añadir' %}"><input type="button" value=" Añadir "></a>
+    {% if usuarios %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Contraseña</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Admin</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.contraseña }}</td>
+                <td>{{ usuario.correo }}</td>
+                <td>{{ usuario.telefono }}</td>
+                <td>{{ usuario.admin }}</td>
+                <td>
+                    <a href="{% url 'usuario_editar' pk=usuario.telefono %}">Modificar</a>
+                    <a href="{% url 'usuario_eliminar' pk=usuario.telefono %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}
